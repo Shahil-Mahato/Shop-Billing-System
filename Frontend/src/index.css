@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;700&display=swap');
+
+:root {
+  --bg: #eef1f4;
+  --card: #ffffff;
+  --ink: #16222e;
+  --mute: #5d6b78;
+  --line: #d5dbe1;
+  --acc: #0f6b5c;
+  --accd: #0b4f44;
+  --soft: #e4f1ee;
+  --err: #b3261e;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 15px/1.5 'Public Sans', system-ui, sans-serif;
+}
+
+/* ---------- layout ---------- */
+.topbar {
+  background: var(--card);
+  border-bottom: 1px solid var(--line);
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+.topbar-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.brand { font-size: 18px; font-weight: 700; margin: 14px 0; }
+.page { max-width: 960px; margin: 0 auto; padding: 20px; }
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 20px;
+}
+
+/* ---------- tabs ---------- */
+.tabs { display: flex; gap: 4px; flex: 1; flex-wrap: wrap; }
+.tabs button {
+  background: none;
+  color: var(--mute);
+  border: 0;
+  border-bottom: 3px solid transparent;
+  border-radius: 0;
+  padding: 16px 12px 13px;
+  font-weight: 500;
+}
+.tabs button:hover { background: none; color: var(--ink); }
+.tabs button.on { color: var(--ink); border-bottom-color: var(--acc); font-weight: 700; }
+.tabs .push { margin-left: auto; }
+
+/* ---------- text ---------- */
+h1, h2, h3 { line-height: 1.25; }
+h2 { font-size: 18px; margin: 0 0 14px; }
+h3 { font-size: 16px; margin: 20px 0 10px; }
+p { margin: 8px 0; }
+
+/* ---------- forms ---------- */
+input, select {
+  font: inherit;
+  color: var(--ink);
+  background: #fff;
+  padding: 9px 11px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  max-width: 100%;
+}
+input[type='checkbox'] { width: auto; accent-color: var(--acc); }
+input:focus-visible, select:focus-visible, button:focus-visible {
+  outline: 2px solid var(--acc);
+  outline-offset: 1px;
+}
+label { color: var(--mute); }
+
+/* ---------- buttons ---------- */
+button {
+  font: inherit;
+  font-weight: 600;
+  background: var(--acc);
+  color: #fff;
+  border: 1px solid var(--acc);
+  border-radius: 6px;
+  padding: 9px 16px;
+  cursor: pointer;
+}
+button:hover { background: var(--accd); border-color: var(--accd); }
+button:disabled { opacity: 0.45; cursor: not-allowed; }
+
+button.ghost, td button {
+  background: #fff;
+  color: var(--acc);
+  border-color: var(--line);
+}
+button.ghost:hover, td button:hover { background: var(--soft); border-color: var(--acc); }
+td button { padding: 5px 10px; font-size: 14px; }
+button.danger { color: var(--err); }
+button.danger:hover { background: #fdecea; border-color: var(--err); }
+
+/* ---------- tables ---------- */
+table { width: 100%; border-collapse: collapse; }
+th {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--mute);
+  padding: 8px;
+  border-bottom: 2px solid var(--line);
+}
+td { padding: 10px 8px; vertical-align: middle; }
+tbody tr { border-top: 1px solid var(--line) !important; }
+tbody tr:hover { background: #f7f9fa; }
+
+/* ---------- bill totals box ---------- */
+.totals {
+  margin-top: 18px;
+  max-width: 340px;
+  padding: 14px 16px;
+  background: var(--soft);
+  border-radius: 8px;
+}
+
+/* ---------- login ---------- */
+.login { max-width: 340px; margin: 80px auto; }
+.login form { display: grid; gap: 12px; }
+.login h2 { margin-bottom: 4px; }
+
+/* ---------- phones and tablets ---------- */
+@media (max-width: 700px) {
+  .page { padding: 12px; }
+  .card { padding: 14px; }
+  table { display: block; overflow-x: auto; white-space: nowrap; }
+}
+
+/* ---------- printing: invoice only, on plain white ---------- */
+@media print {
+  body { background: #fff; }
+  .topbar { display: none; }
+  .page { padding: 0; max-width: none; }
+  .card { border: 0; padding: 0; }
+  tbody tr:hover { background: none; }
+}
